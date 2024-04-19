@@ -1,25 +1,19 @@
-/* Copyright (c) 2023 Promineo Tech
-   Author:  Promineo Tech Academic Team
-   Subject:  CSS Lab
-   FE Lab02
-*/
-/*----------------------------------------------------
-Key Terms:
+/*Key Terms:
 * selector
 * class
 * id 
 * element 
-* flex 
+* flex */
 
-Objectives:
+/*Objectives:
 * Use CSS selectors to target specific HTML elements and apply styles to them.
 * Use CSS properties to change the layout, typography, and visual design of the webpage.
 * Use the CSS box model to control the size and spacing of HTML elements.
 * Use CSS to create a responsive layout that adapts to different screen sizes and devices.
 * Use browser developer tools to inspect and debug their CSS.
------------------------------------------------------
+-----------------------------------------------------*/
 
-Instructions: The HTML file is complete and images have been provided. The CSS file is missing many properties but all necessary ELEMENTS, ID, and CLASS SELECTORS are already provided. Use the HTML file to find the element's ID or CLASS to be used as a selector in the CSS file to add the properties in the correct place. The CSS file is already linked to the HTML file.
+/*Instructions: The HTML file is complete and images have been provided. The CSS file is missing many properties but all necessary ELEMENTS, ID, and CLASS SELECTORS are already provided. Use the HTML file to find the element's ID or CLASS to be used as a selector in the CSS file to add the properties in the correct place. The CSS file is already linked to the HTML file.
 
 -----------------------------------------------------
 
@@ -34,9 +28,9 @@ PART 1: Using the ELEMENT Selector:
 * Step 5: The top image has a caption, give it a font color of rgb(0, 58, 66).
 * Step 6: Align the paragraph in the footer to the center.(See documentation https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
 
------------------------------------------------------
+-----------------------------------------------------*/
 
-PART 2: Using ID or CLASS Selectors: 
+/*PART 2: Using ID or CLASS Selectors: 
 * Step 1: Notice that there are 2 images at the top, one shorter than the other. In the HTML file, find the ID for the shorter image and give it a property of {display: none;} in the CSS file.
 * Step 2: Now that the shorter image is hidden, when the screen is 500 pixels or less, the shorter image needs to display once again and the longer image needs to be hidden. Go to the last MEDIA QUERY in the CSS file and add the necessary properties to make this happen. If using Chrome, use the Chrome Dev tools to check the web page's responsiveness.
 * Step 3: The caption for the top banner image is not under the image like it should be. Add a property to make the caption wrap under the image using flex.
@@ -44,9 +38,9 @@ PART 2: Using ID or CLASS Selectors:
 * Step 5: Give the DIV that houses the "Top 5 Places to Visit..." a background color of rgb(0, 58, 66) and a border radius of 1 rem.
 * Step 6: The DIV that houses the "Tips and Reccs" appears to be squished when the screen size is less than 1100 pixels. Add to the appropriate MEDIA QUERY a property that will allow the div to wrap down and then justify the contents to the center. Start by taking a look at the CSS for that DIV outside of the MEDIA QUERY to understand how the DIV is behaving.
 
------------------------------------------------------
+-----------------------------------------------------*/
 
-*/
+
 
 /* ↓ YOUR CSS CODE HERE ↓  */
 
@@ -58,10 +52,6 @@ of the elements on the page can help fix issues with spacing too, especially if 
 /* ---UNIVERSAL SELECTOR--- */
 /* OPTIONAL ↓ REMOVE COMMENTS TO SEE RED BORDER:*/
 
-* {
-  border: 1px solid red;
-}
-
 /* ---ELEMENT SELECTORS--- */
 
 html {
@@ -69,17 +59,29 @@ html {
   background: linear-gradient(180deg, #84daf5, #89ffff, #affffa, #ffffff);
 }
 body {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  /*alt way to do this: margin: 1rem(top) 5rem(right) 1rem(bottom) 5rem(left); */
+  /*shortcut of the shortcut: margin: 1rem (auto targets top/bottom) 5rem (auto targets right/left)*/
 }
 
 h1 {
   text-align: center;
+  filter:drop-shadow(2px 2px 1px #0f6a9e);
+  /* 2px (x offset) 2px (y offset) 1px (blur) then the hexcolor)*/
+  /* if the x offset was bigger it would move the shadow farther to the right - if it was smaller/negative it would move the shadow to the left*/
+  /* if the y offset was bigger it would drop the shadow down - if it was smaller/negative the shadow would move up*/ 
+  /* the blur makes the shadow thicker - the smaller the number (1px) the thicker the shadow - the bigger the number (10px) the thinner the shadow*/
 }
 h2 {
   margin: 4rem auto 1rem auto;
   text-align: center;
 }
-p,
-li {
+p,li {
+  font-size: 20px;
+
 }
 ol {
   padding: 20px;
@@ -89,20 +91,30 @@ ol li {
   padding: 10px 0;
 }
 img {
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px 1px rgba(0,0,0,.5);
+  /* 2px (x offset) 2px (y offset) 2px (blur) 1px (spread radius)*/
+  /*rgba allows you to choose the color you want but the added number (.5) at the end determines how transparent it will be*/
 }
 figcaption {
   text-align: center;
   font-weight: bold;
+  color: rgb(0, 58, 66);
 }
 footer {
   margin: 2rem 0 2rem 0;
+  text-align:center;
+  /*aligns the text in the center*/
 }
 
 /* ---CUSTOM CLASS NAME SELECTORS--- */
 
 .banner-div {
+  /*step 3 in pt2 - the figcation is within a div (.banner-div) so we need to add flex wrap here*/
   display: flex;
   justify-content: center;
+  flex-wrap:wrap;
 }
 #banner-long {
   max-width: 100%;
@@ -110,10 +122,14 @@ footer {
 }
 #banner-short {
   width: 230px;
+  display: none;
+  /* display: none; makes the image be hidden on the webpage*/
 }
 .img-div {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  /*adds space around the images*/
 }
 
 .tips-div {
@@ -126,6 +142,8 @@ footer {
   margin: 5rem auto;
   color: rgb(253, 197, 132);
   padding: 1rem 2rem;
+  background-color: rgb(0, 58, 66);
+  border-radius: 1rem;
 }
 .top-places-div h2 {
   text-align: center;
@@ -134,24 +152,26 @@ footer {
 }
 
 /* ----- MEDIA QUERIES for RESPONSIVE DESIGN ----- */
-
+/* when the screen is width 1500 px - all of the elements inside the media querey brackets will change*/
 @media only screen and (max-width: 1500px) {
   .img-div img {
     width: 420px;
   }
 }
-
+/* when the screen is width 1100 px - all of the elements inside the media querey brackets will change*/
 @media only screen and (max-width: 1100px) {
   .tips-div {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
-
+/* media queries say when the screen is this big or this small, do this instead*/ 
+/* when the screen is width 500 px - all of the elements inside the media querey brackets will change*/
 @media only screen and (max-width: 500px) {
   body {
     margin: 1rem;
   }
-  p,
-  li {
+  p,li {
     font-size: 16px;
   }
   .img-div img {
@@ -161,8 +181,12 @@ footer {
     width: 230px;
   }
   #banner-long {
+    display:none;
+    /* when the screen is at 500px this image will disppear*/
   }
   #banner-short {
+    display:block;
   }
 }
+/* to check the responsiveness of the image changing due to screen px changes with different devices - go to live server page of your webpage - hit fn + F12*/
 /* ------------------------- */
