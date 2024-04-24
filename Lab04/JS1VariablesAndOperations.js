@@ -52,21 +52,28 @@ Question 1. Creating & 'console.log()'ing variables \n`);
  * ↓ YOUR CODE HERE ↓ */
 
 console.log("Step 1:  Number of Seats on a Plane");
-
+var availableFlightSeats = 7;
+console.log("The number of seats left on this plane are " + availableFlightSeats);
 
 console.log("Step 2:  Cost of Groceries");
-
+var costOfGroceries = 89.50;
+console.log ("The cost of groceries at checkout is " + costOfGroceries);
 
 console.log("Step 3:  Middle Initial");
-
+var middleInitial = "N"; 
+console.log ("A person's middle inital is " + middleInitial);
 
 console.log("Step 4:  Is it Hot Outside?");
-
+var isItHotOutside = false;
+console.log ("Is it hot outside? " + isItHotOutside);
 
 console.log("Step 5:  First Name");
-
+var customerFirstName = "Tiffany";
+console.log ("Customer's first name is " + customerFirstName);
 
 console.log("Step 6:  Street Address");
+var streetAddress = "181 Huntington Dr.";
+console.log ("The street address is " + streetAddress);
 
 
 /*-------------------------------------------------------*/
@@ -85,34 +92,37 @@ Question 2. Creating & 'console.log()'ing variables \n`);
     console.log('Remove Plane Seats:')
 //	A customer booked 2 plane seats. Remove 2 seats from the available seats variable
 //  ↓ YOUR CODE HERE ↓
-
+console.log ("A customer booked 2 seats... There are only " + (availableFlightSeats - 2) + " seats left");
 
     console.log('Buy a Candy Bar:')
 //	Impulse candy bar purchase! Add 2.15 to the grocery total
 //  ↓ YOUR CODE HERE ↓
-
+console.log ("Threw a candy bar in there too, the total is now " + (costOfGroceries + 2.15));
 
     console.log('Fix a Birth Certificate:')
 //	A birth certificate was printed incorrectly, change the middle initial to something else
 //  ↓ YOUR CODE HERE ↓
-
+middleInitial = "Q";
+console.log ("Whoops! Fixed the certificate, their middle initial is now " + middleInitial);
 
     console.log('Changing Seasons:')
 //	The season has changed, update the hot outside variable	to be opposite of what it was
 //  ↓ YOUR CODE HERE ↓
-    
+    isItHotOutside = !isItHotOutside; //using ! basically flips the answer you originally gave it to be opposite of what it was so false is now true or you can write it like isHotOutside = true; then update console.log normally
+    console.log("The season changed to summer! " + isItHotOutside);
 
     console.log('Full Name:')
 //	Create a new variable called full name using the customer's
 //  first name, the middle initial, and a last name of your choice
 //  ↓ YOUR CODE HERE ↓
-
+var fullName = customerFirstName + middleInitial + "Jacobs";
+console.log ("Customer's full name is " + fullName);
 
     console.log('Introduce a Customer:')
 //	Print a line to the console that introduces the customer 
 //	including the name, and saying that they live at the address variable
 //  ↓ YOUR CODE HERE ↓
-
+console.log ("Here is a new customer! Their name is " + fullName + ". " + "They live at " + streetAddress);
 
 
     console.log('-----------Finished------------')
