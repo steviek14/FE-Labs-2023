@@ -44,6 +44,15 @@ Question 1: Driving the speed limit.. ? \n`);
  * 
  * 
  * ↓ YOUR CODE HERE ↓ */
+var speedLimit = 60;
+var mySpeed = 71; 
+   if (mySpeed > speedLimit) { // This one is true because 71 > 60 so it ran 
+      console.log ('Slow Down! Mom is mad!'); 
+   } else if (mySpeed == speedLimit) { //This one is false because 71 == 60 
+      console.log ('Everyone is happy!');
+   } else if (mySpeed < speedLimit) { //This one is false because 71 < 60 
+      console.log ('Speed up! Dad is mad!');} 
+
 
 
 
@@ -63,6 +72,13 @@ Question 2: Is it time to wake up for work? \n`);
  *         b. Otherwise, print "I can sleep in!" to the console.
  * 
  * ↓ YOUR CODE HERE ↓ */
+var alarmSet = true 
+var weekDay = true 
+if (alarmSet === weekDay) {
+   console.log ('Sound Alarm! Time for work!');
+} else {
+   console.log('I can sleep in!')
+}
 
 
 
@@ -81,6 +97,15 @@ Question 3: Username & Password \n`);
  *	        - otherwise, print "Admin Access Denied"
  * 
  * ↓ YOUR CODE HERE ↓ */
+var userName = 'Tommy123'
+var passWord = 12345
+if (userName == 'Tommy123' && passWord == 12345 || (userName == 'Timmy456' && passWord == 6789)) {
+   console.log('Admin Login Sucessful'); 
+} else { 
+   console.log('Admin Access Denied');
+}
+
+  
 
 
 
@@ -101,6 +126,57 @@ Question 4: Student Class \n`);
  *         Any other value should return "Error" to the console.
  * 
  * ↓ YOUR CODE HERE ↓ */
+var studentClass 
+var studentGrade = 9;
+switch (studentGrade) {
+   case 1: 
+   case 2:
+   case 3:
+   case 4:
+   case 5:
+   case 6:
+      console.log(studentClass = 'Elementary');
+      break;
+   case 7:
+   case 8:
+      console.log( studentClass = 'Middle');
+      break;
+   case 9:
+      console.log( studentClass = 'Freshman');
+      break;
+   case 10:
+      console.log(studentClass = 'Sophmore');
+      break;
+   case 11:
+      console.log(studentClass = 'Junior');
+      break;
+   case 12:
+      console.log(studentClass = 'Senior');
+      break;
+   default: 
+      console.log(studentClass = 'Error');
+}
+//Another way to do it IMO BETTER shown in the walkthrough 
+var studentClass
+var studentGrade = 5
+   if (studentGrade >= 0 && studentGrade <= 6){
+      studentClass = 'Elementary' 
+   } else if (studentGrade == 7 || studentGrade == 8) {
+      studentClass = 'Elementary'
+   } else if (studentGrade == 9) {
+      studentClass = 'Middle'
+   }  else if (studentGrade == 10) {
+      studentClass = 'Sophmore'
+   } else if (studentGrade == 11) {
+      studentClass = 'Junior'
+   } else if (studentGrade == 12) {
+      studentClass = 'Senior'
+   } else {
+      console.log('error')
+   }
+   
+console.log(studentClass)
+
 
 
 
@@ -116,7 +192,21 @@ Question 5: Loops! \n`);
  *         Print the iterator if the remainder (% // modulus) is 0 when divisible by 4.
  * 
  * ↓ YOUR CODE HERE ↓ */
-
+for (var i = 10; i >= -10; i--) {
+   console.log (i); 
+}
+/* do  {
+      console.log(number)
+      number++ 
+} while (number <= 50); */
+let number = 1
+   do  {
+      if (number % 4 == 0) {
+         console.log(number)
+      }
+      number++ 
+   } while (number <= 50);
+   
 
 
 /*-------------------------------------------------------*/
@@ -135,7 +225,10 @@ Question 6: Debugging an infinite loop! \n`);
    for (let i = 11; i > 10; i++) { 
       console.log(i);   
    } 
-  */
+  */ 
+ /*This code will cause an infinite loop because it is telling it hey if i is 
+greater than 10 and i is 11 -- keep adding 1 to i in each iteration forever*/
+//if i is less than 10 it would solve the problem or changing i <= 10 
 
 
 
