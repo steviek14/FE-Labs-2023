@@ -43,13 +43,21 @@ Question 1: Declaring Let and Const variables`)
  * Step 2: Initialize two more variables using 'let' and set one value to your name, and the other to your friends name.
  *
  * ↓ YOUR CODE HERE ↓ */
+const lunchFood ='tacos'
+//const lunchDrink = 'margaritas'
+let lunchDrink = 'mojitos'
+let myName = 'Stevie'
+let myFriendsName = 'Key'
+
+console.log(lunchFood, lunchDrink, myName, myFriendsName)
+
 
 //Question: Name a reason why you would use const instead of let.
-//Answer:
+//Answer: To make sure you or other developers don't accidently change the variable. If I don't want that const variable to be reassigned 
 
 /*---------------------------------- Template Literals -------------------------------------*/
-console.log(`-------------------------- 
-Question 2: Template Literals`)
+/*console.log(`-------------------------- */
+//Question 2: Template Literals`)
 
 /*
  * Step 1: Using template literals and the variables we just created,
@@ -57,12 +65,15 @@ Question 2: Template Literals`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+let eatAndDrinkTime = `${myName} and ${myFriendsName} are eating ${lunchFood} and drinking ${lunchDrink}.`
+console.log(eatAndDrinkTime);
 
 //Question: How would the sentence you wrote look if you used string concatenation instead of template literals?
-//          console.log() your answer to check
-//Answer:
-console.log(`-------------------------- 
-Question 2a: Oh no`)
+ //        console.log() your answer to check
+
+console.log(eatAndDrinkTime = myName + ' and ' + myFriendsName + ' are eating ' + lunchFood + ' and drinking ' + lunchDrink + '.');
+
+//Question 2a: Oh no`)
 
 /* Oh no! You just remembered your friend is allergic to the drink we prepared!
  *
@@ -70,9 +81,11 @@ Question 2a: Oh no`)
  * Step 2: Make a change to your code in Question 1 to fix the error. Run your code to make sure it's fixed.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+//const lunchDrink = 'mojitos' ---ERROR
 //Question: Read the error message - in your own words - what does it mean?
-//Answer:
+//Answer: this error means that lunchDrink is under a const variable -- therefore, it cannot be changed 
+//TO FIX THIS -- change the lunchDrink const to a let variable 
+console.log(lunchDrink);
 
 /*---------------------------------- Arrow Functions -------------------------------------*/
 console.log(`-------------------------- 
@@ -91,8 +104,18 @@ Question 3: Arrow Functions`)
  *         console.log(lunchTime('Pizza','Water'))
  * ↓ YOUR CODE HERE ↓ */
 
+const lunchTime = (foodChoice, drinkChoice) => {
+   return `${myName} and ${myFriendsName} are eating ${foodChoice} and drinking ${drinkChoice}.`
+}
+console.log(lunchTime('Pizza', 'Water'))
+
 //Question: What would your function look like if we were using the old way of creating a function?
-//Answer:
+//Answer: 
+
+/* function lunchTime (foodChoice, drinkChoice) {
+      console.log(lunchTime = myName + ' and ' + myFriendsName + ' are eating ' + foodChoice + ' and drinking ' + drinkChoice + '.');)
+}
+*/
 
 /*---------------------------------- Callbacks -------------------------------------*/
 console.log(`-------------------------- 
@@ -107,5 +130,8 @@ Question 4: Callbacks`)
  * Step 3: console.log() your new function, foodForTodayAndTomorrow, and pass in lunchTime('newFoodItem', 'newDrinkItem') as the argument for the "callbackFunction" parameter.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+const foodForTodayAndTomorrow = (tomorrowsFoodChoice, tomorrowsDrinkChoice, callbackFunction) => {
+   return `${callbackFunction} Tomorrow we want ${tomorrowsFoodChoice} and ${tomorrowsDrinkChoice}`
+}
+console.log(foodForTodayAndTomorrow('Pizza', 'Soda', lunchTime('Cheese', 'Apple Juice')))
 console.log(`-----------Finished------------`)
