@@ -57,7 +57,9 @@ console.log(
  *
  * ↓ YOUR CODE HERE ↓ */
 // "On July 20th 1969, Niel Armstrong was the first person to set foot on the Earth's moon."
-
+console.log(
+  `On July 20th ${person.year}, ${person.firstname} ${person.lastname} was the first person to set foot on the Earth's moon.`
+)
 /*-------------------------------------------------------*/
 // Question 2: Instance of a Class
 console.log(`--------------------------
@@ -85,7 +87,8 @@ greeting.hello()
  * Step 3: A greeting should print to the console
  *
  * ↓ YOUR CODE HERE ↓ */
-
+let myGreeting = new Greeting ('Stevie', 'MN')
+myGreeting.hello()
 /*-------------------------------------------------------*/
 // Question 3: myBook
 console.log(`--------------------------
@@ -114,7 +117,13 @@ class Book {
  * Step 7: Invoke the describe method for the yourBook instance. Make it print to the console also.
  *
  * ↓ YOUR CODE HERE ↓ */
+let myBook = new Book ('Pride and Prejudice', 'Jane Austen')
+console.log(myBook.title)
+console.log(myBook.author)
+console.log(myBook.describe())
 
+let yourBook = new Book ('Dracula', 'Bram Stoker')
+console.log(yourBook.describe())
 /*-------------------------------------------------------*/
 // Question 4: Create a Class
 console.log(`--------------------------
@@ -129,13 +138,31 @@ Question 4: Create a Class \n`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+class Fruit {
+  constructor(name, color, taste){
+    this.name = name
+    this.color= color
+    this.taste= taste
+  }
+  description(){
+    console.log(`A ${this.name} is ${this.color} and has a ${this.taste} taste.`)
+  }
+}
+
+let fruit1 = new Fruit ('lime', 'green', 'sour')
+fruit1.description()
+
+let fruit2 = new Fruit ('banana', 'yellow', 'sweet')
+fruit2.description()
 
 /*-------------------------------------------------------*/
 // Question 5: Inheritance and Polymorphism
 console.log(`--------------------------
 Question 5: Inheritance and Polymorphism \n`)
 
-// Look at the provided code below. Notice how Student and Teacher inherit from the Person class through the use of the "extends" and "super" key words. Also, how Student has a redefined details method that is more appropriate than the details method it would have inherited from the Person super class...
+/* Look at the provided code below. Notice how Student and Teacher inherit from the Person class through the use of the "extends" and 
+"super" key words. Also, how Student has a redefined details method that is more appropriate than the details method it would have 
+inherited from the Person super class...*/
 
 class Person {
   constructor(name, role) {
@@ -173,6 +200,11 @@ class Teacher extends Person {
  * Step 4: Call the introduction method on your new teacher instance AND the details method, make sure that the results are printed to the console.
  *
  * ↓ YOUR CODE HERE ↓ */
+let student = new Student ('Jacky', 'student')
+console.log(student.introduction(), student.details())
+
+let teacher = new Teacher ('Mr. Bean','teacher')
+console.log(teacher.introduction(), teacher.details())
 
 /*-------------------------------------------------------*/
 // Question 6: Inheritance
@@ -199,7 +231,13 @@ class Parent {
  * HINT: You should be using vital key terms like extends and super
  *
  * ↓ YOUR CODE HERE ↓ */
-
+class Child extends Parent {
+  constructor (name, age) {
+    super(name, age)
+  }
+}
+let child = new Child ('Pugsley', 10)
+child.details()
 /*-------------------------------------------------------*/
 // Question 7: Put it all together
 console.log(`--------------------------
@@ -218,5 +256,39 @@ Question 7: Put it all together \n`)
  * Step 10: Display the movies information to the console, using the new instance list
  *
  * ↓ YOUR CODE HERE ↓ */
+class Movie {
+  constructor(title, director){
+    this.title = title
+    this.director = director 
+  }
+  describe (){
+    return`The movie ${this.title} was directed by ${this.director}`
+  }
+}
+class List {
+  constructor() {
+   this.movies = []
+  }
+  addMovie (movie){
+    this.movies.push(movie)
+  }
+  displayMovies (){
+    let movieInfo = ''
+    for (let i = 0; i < this.movies.length; i++){
+      movieInfo += `${this.movies[i].title} directed by ${this.movies[i].director}`;
+    }
+    return movieInfo 
+  }
+}
+let movie1 = new Movie ('Jurassic Park', 'Steven Spielberg')
+console.log(movie1.describe())
+
+let movie2 = new Movie ('How The Grinch Stole Christmas', 'Ron Howard')
+console.log(movie2.describe())
+
+let list = new List;
+list.addMovie(movie1)
+list.addMovie(movie2)
+console.log(list.displayMovies())
 
 console.log(`-----------Finished------------`)
