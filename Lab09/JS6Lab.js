@@ -59,15 +59,15 @@ console.log('Example Question: Add two numbers')
 /* -- STEP 1: DEBUG CODE --*/
 
 // BROKEN CODE EXAMPLE:
-// function addTwoNumbers (num1,num2) {
-//    num1+num2
-// }
+ function addTwoNumbers (num1,num2) {
+   return num1+num2
+ }
 
-// console.log(addTwoNumbers(2,3)) // ERROR IN CONSOLE: undefined
+ console.log(addTwoNumbers(2,3)) // ERROR IN CONSOLE: undefined
 // AFTER DEBUGGING:
-function addTwoNumbers(num1, num2) {
-  return `num1 + num2 is: ${num1 + num2}`
-}
+//function addTwoNumbers(num1, num2) {
+//  return `num1 + num2 is: ${num1 + num2}`
+//}
 
 console.log(addTwoNumbers(2, 3)) // logs 5
 /* -- STEP 2: CREATE A TEST IN tests.js -- */

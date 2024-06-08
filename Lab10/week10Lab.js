@@ -25,6 +25,11 @@
 // Read the comments and add your code where it is specified for each question.
 /* ----------------------------------------------------- */
 
+
+
+
+
+
 /*------------------------ Creating a website with only JS ------------------------*/
 console.log(`-------------------------- 
 Part 1: Create a form with only JavaScript`)
@@ -42,9 +47,43 @@ Part 1: Create a form with only JavaScript`)
            Do the same steps, appending a label/input for Email, and a submit button to your form.
  * ↓ YOUR CODE HERE ↓ */
 
-// console.log(myForm)
+//form element
+let myForm = document.createElement('form')
+document.body.appendChild(myForm); //attaching form to HTML document
+
+//name label and input elements
+let myNameLabel = document.createElement('label')
+let myNameInput = document.createElement('input')
+myNameLabel.innerHTML = 'Name'
+myNameInput = " "
+
+//email label and input elements 
+let emailLabel = document.createElement('label')
+let emailInput = document.createElement('input')
+emailLabel.innerHTML = 'Email'
+
+//submit button element 
+mySubmitButton = document.createElement('button')
+mySubmitButton.innerHTML = 'Submit'
+
+//appending name input and email input and submit button elements to form 
+myForm.append(mySubmitButton);
+myForm.appendChild(myNameLabel);
+myForm.appendChild(myNameInput);
+myForm.appendChild(emailLabel);
+myForm.appendChild(emailInput);
+
+console.log(myForm);
+
+
+
+
 //Question: Besides changing the innerHTML, what other HTML things can we change using JavaScript?
-//Answer:
+//Answer: class, id, css, styles, values, properties etc. anything that exists in HTML you can create in JS
+
+
+
+
 
 /*------------------------ Styling a form with only JavaScript------------------------*/
 console.log(`-------------------------- 
@@ -60,8 +99,32 @@ Part 2: Styling our form with only JavaScript`)
  *
  * ↓ YOUR CODE HERE ↓ */
 
+myForm.style.backgroundColor = 'pink' //need to target a specific element that has been declared 
+myForm.style.color = 'Blue'
+
+/* 
+   CSS example of Step 3:
+      .myForm {
+         display : flex 
+      }
+*/
+//How to do the CSS Ex above in JS: ** Notice how similar they look! 
+myForm.style.display = 'flex'
+myForm.style.flexDirection = "column"
+myForm.style.maxWidth = '250px'
+
+
+
+
+
 //Question: Do you prefer styling with JavaScript or CSS?
-//Answer:
+//Answer: CSS -> I think it takes less steps and makes more sense in my head and it takes too much space in JS file -- rather have it in a seperate file 
+
+
+
+
+
+
 
 /*------------------------ Creating a table with only JavaScript ------------------------*/
 console.log(`-------------------------- 
@@ -80,10 +143,37 @@ Part 3: Creating a table with only JavaScript`)
  * Final Step: Style your table using JavaScript starting with a border. You may need to target more element/nodes than we did with myTable.
  * ↓ YOUR CODE HERE ↓ */
 
-// console.log(myTable)
+let myTable = document.createElement('table');
+let myTableRow1 = document.createElement('tr');
+let myTableRow2 = document.createElement('tr');
+
+let myTdName = document.createElement('td');
+myTdName.innerHTML = 'Name'
+let myTdEmail = document.createElement('td');
+myTdEmail.innerHTML = 'Email'
+
+
+myTable.append(myTableRow1, myTableRow2)
+myTableRow1.append(myTdName);
+myTableRow2.append(myTdEmail);
+
+myTable.style.border = "1px solid black"
+document.body.append(myTable);
+
+
+
+console.log(myTable)
+
+
+
 //Question: While this is clearly a more round-about way of making a table, how can using JavaScript in this way
 //          more beneficial than HTML?
-//Answer:
+//Answer: You could set up the basic HTML for a table but leave most of the input be in JS to allow for user input to change the way the table appears
+         //it makes it so the information that is in the table is less permanent and dynamic
+
+
+
+
 
 /*------------------------ Changing our body background on click ------------------------*/
 console.log(`-------------------------- 
@@ -103,10 +193,24 @@ Part 4: Changing our background on click`)
  * Step 7: Click the button in your index.html and see the background change!
  *
  * ↓ YOUR CODE HERE ↓ */
+let myButton = document.getElementById('myButton')
 
+function random(number){
+   return Math.floor(Math.random() * (number + 1));
+}
+myButton.addEventListener('click',() =>{
+   const rndCol = `rgb(${random(255)} ${random (255)} ${random(255)})`
+   document.body.style.backgroundColor = rndCol
+})
 //Question: What other event listeners are there?
 //             Try them out by replacing 'click' in your function above!
-//Answer:
+/*Answer: "mouseover" and "mouseout": the color changes when the mouse pointer hovers over the button
+                                       or when the pointer moves off the button 
+            "keydown": when the user presses a key and the button is focused
+            "focus" and "blur": The color changes when the button is focused and unfocused;
+                                 try pressing the tab to focus on the button and press the tab again to focus away from the button 
+            "dblclick": the color changes when the button is double-clicked
+*/
 
 console.log(`-----------Finished------------`)
 
@@ -119,3 +223,30 @@ console.log(`-----------Finished------------`)
  *    and append a new <tr> containing those values to your tBody element.
  *    Look into event.preventDefault(). Buttons inside of forms have a default setting to refresh the page.
  */
+
+//1. Create a button that changes the innerHTML of a div back and forth from 'Hello' to 'World'
+let hello = document.getElementById('Hello')
+let world = document.getElementById('World')
+
+
+   world.addEventListener('click', () =>{
+      if(hello.innerHTML == "Hello"){
+         hello.innerHTML = "World"
+      }else {
+         hello.innerHTML = "Hello"
+      }
+   })
+
+
+//2. Create an image that disappears when you hover over it, and reappears when you hover off
+myImage = document.getElementById('myImage');
+let para = document.getElementById('paragraph')
+myImage.addEventListener('mouseover', ()=>{
+   myImage.style.opacity = '0';
+   para.innerHTML ="Bye Bye Flowers!"
+});
+myImage.addEventListener('mouseout', () =>{
+   myImage.style.opacity = '1';
+   para.innerHTML ="Flowers For You!"
+})
+
