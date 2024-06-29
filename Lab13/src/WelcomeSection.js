@@ -1,11 +1,13 @@
-function WelcomeSection(){
+
 
     let date = new Date()
-         let singleUser = {
+    
+    let singleUser = {
          name: 'John',
          time: date.toDateString(),
-         }
+    }
 
+export default function WelcomeSection(){
     return(
         <div className="WelcomeSection">
           <h1>Welcome,{singleUser.name}</h1>
@@ -13,4 +15,3 @@ function WelcomeSection(){
         </div>
     )
 }
-export default WelcomeSection;

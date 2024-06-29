@@ -77,10 +77,12 @@ import WelcomeSection from './WelcomeSection'
 
 
 function App() {
-  return <div className="App">
+  return (
+  <div className="App">
     <Nav />
     <WelcomeSection />
   </div>
+  )
 }
 
 export default App
