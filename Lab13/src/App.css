@@ -1,0 +1,30 @@
+.navBar{
+    width: 100vw;
+    background-color: rgb(53, 156, 246);
+    color: aliceblue;
+    font-size: 24px;
+    padding: 5px;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+nav ul li{
+    list-style-type: none;
+    margin-right: 1em;
+}
+nav ul li:hover{
+    color: rgba(0, 0, 0, 0.705); 
+}
+
+nav ul li:active{
+    background-color: rgb(156, 188, 239);
+}
+.WelcomeSection{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #EEEEEE;
+    padding: 1em;
+}

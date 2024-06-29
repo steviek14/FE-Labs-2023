@@ -1,9 +1,7 @@
-/* 
-  Copyright (c) 2023 Promineo Tech
-  Author:  Promineo Tech Academic Team
-  Subject:  JavaScript CRUD Operations with JQuery
-  FE Lab Week 12
-*/
+/* Copyright (c) 2023 Promineo Tech
+   Author:  Promineo Tech Academic Team
+   Subject:  JavaScript CRUD Operations with JQuery
+   JavaScript Lab Solution Week 12 */
 
 /* ----------------------------------------------------- */
 // Key Term List:
@@ -28,8 +26,8 @@
  * You should be working in a folder containing 3 files: db.json, index.html, and week12Lab.js.
  *
  * The db.json should be an object. That object contains one key:value pair.
- * an object called "studentRoster" that is an array of objects with multiple
- * key:value pairs: "fullName", "researchAssignment", and "id".
+ *    an object called "studentRoster" that is an array of objects with multiple
+ *    key:value pairs: "fullName", "researchAssignment", and "id".
  *
  * Your index.html has been set up with CDN's to use Jquery & Bootstrap.
  * Removing/changing any <script> or <link> elements may affect functionality.
@@ -75,6 +73,7 @@ Part 1: Setup your JSON server`)
  * Step 3: Below, create a const declaration for your URL endpoint
  *
  * ↓ YOUR CODE HERE ↓ */
+const STUDENT_ROSTER_URL = 'http://localhost:3000/studentRoster'
 
 /*------------------------ Part 2: HTTP Verb: GET ------------------------*/
 console.log(
@@ -88,9 +87,23 @@ Part 2: GET and displaying the information`
  *
  * Step 2: Instead of logging, loop over data and add your information to the DOM.
  *
- *         Reminder: While you are not required to, the lab solution uses a <table>
- *
  * ↓ YOUR CODE HERE ↓ */
+
+$.get(STUDENT_ROSTER_URL).then((data) =>
+  data.map((student) => {
+    $('tbody').append(
+      $(`
+    <tr>
+      <td>${student.id}</td>
+      <td>${student.fullName}</td>
+      <td>${student.researchAssignment}</td>
+      <td>
+        <button onclick="deleteUser(${student.id})"}>🗑</button>
+      </td>
+    </tr>`)
+    )
+  })
+)
 
 /*------------------------ Part 3: HTTP Verb: POST ------------------------*/
 console.log(
@@ -111,11 +124,18 @@ Part 3: POST and adding new students`
  *         Replace the console.log('pls work') with jQuery's $.post() method.
  *
  *         The first argument is a URL, the second argument is an object containing
- *         the data to pass in. Use jquery to target the inputElement.val() of our form.
+ *         the data to pass in. Use jquery to target the input values.
  *
  *         Your button should now post a new user on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+
+$('#submitStudent').click(function () {
+  $.post(STUDENT_ROSTER_URL, {
+    fullName: $('#newName').val(),
+    researchAssignment: $('#newAssignment').val(),
+  })
+})
 
 /*------------------------ Part 4: HTTP Verb: DELETE ------------------------*/
 console.log(
@@ -150,6 +170,12 @@ Part 4: DELETE and deleting individual students`
  *
  * ↓ YOUR CODE HERE ↓ */
 
+function deleteUser(id) {
+  $.ajax(`${STUDENT_ROSTER_URL}/${id}`, {
+    type: 'DELETE',
+  })
+}
+
 /*------------------------ HTTP Verb: UPDATE ------------------------*/
 console.log(
   `-------------------------- 
@@ -160,7 +186,7 @@ Part 4: PUT and updating the information`
  * Step 1: Create a function called updateUser(){}
  *
  * Step 2: Create a form in our HTML to update a student's name/assignment by id.
- *         We need labels/input elements for id/studentName/researchAssignment.
+ *         We need input values/labels for id/studentName/researchAssignment
  *
  * Step 3: Add a new header for students ID id in our table.
  * Step 4: Set up $.ajax() for 'PUT'
@@ -173,6 +199,20 @@ Part 4: PUT and updating the information`
  *         do the updateUser function on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+
+function updateUser() {
+  id = $('#updateId').val()
+
+  $.ajax(`${STUDENT_ROSTER_URL}/${id}`, {
+    method: 'PUT',
+    data: {
+      fullName: $('#updateName').val(),
+      researchAssignment: $('#updateAssignment').val(),
+    },
+  })
+}
+
+$('#updateStudent').click(updateUser)
 
 console.log(`-----------Finished------------`)
 
